@@ -5,25 +5,25 @@ interface RelaySwipeProps {
   to: string
   amount: number
   currency: string
-  opReturn: any[] | string
-  outputs: any[]
-  onPayment: () => void
-  onError: () => void
-  onLoad: () => void
-  editable: boolean
-  disabled: boolean
-  devMode: boolean
+  opReturn?: any[] | string
+  outputs?: any[]
+  onPayment?: () => void
+  onError?: () => void
+  onLoad?: () => void
+  editable?: boolean
+  disabled?: boolean
+  devMode?: boolean
 }
 
 interface RelaySendProps {
   to: string
   amount: number
   currency: string
-  opReturn: any[] | string
-  outputs: any[]
-  editable: boolean
-  disabled: boolean
-  devMode: boolean
+  opReturn?: any[] | string
+  outputs?: any[]
+  editable?: boolean
+  disabled?: boolean
+  devMode?: boolean
 }
 
 interface RelaySendResult {
