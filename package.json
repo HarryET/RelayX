@@ -6,7 +6,7 @@
   "license": "BSV",
   "repository": "HarryET/relayx",
   "homepage": "https://relay-x.bitbucket.io",
-  "readme": "https://github.com/HarryET/RelayOneTs#Readme",
+  "readme": "https://github.com/HarryET/RelayOneTs#readme",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.tsx",

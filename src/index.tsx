@@ -66,18 +66,22 @@ interface RelayDecryptResult {
 
 export class RelaySwipe extends React.Component<RelaySwipeProps, any> {
   componentDidMount() {
+    // @ts-ignore // SUPPRESS EL ISSUE
     RelayOne.render(this.el, this.props)
   }
 
+  // @ts-ignore // SUPPRESS react ISSUE
   componentDidUpdate(prevProps: { children: React.ReactNode }) {
     if (prevProps.children !== this.props.children) {
+      // @ts-ignore // SUPPRESS EL ISSUE
       RelayOne.render(this.el, this.props)
     }
   }
 
   render() {
     return (
-      <div ref={el => this.el = el}></div>
+      // @ts-ignore // SUPPRESS EL ISSUE
+      <div ref={el => this.el = el}/>
     );
   }
 }
@@ -92,18 +96,29 @@ export class RelayOne {
       );
     }
 
+    // @ts-ignore // SUPPRESS EL ISSUE
     static render(el, props) {
+      // @ts-ignore // SUPPRESS relayone import
       relayone.render(el, props)
     }
 
-    static isLinked = (): boolean => await relayone.isLinked();
-    static getBalance = (): string => await relayone.getBalance();
-    static send = (options: RelaySendProps): RelaySendResult => await relayone.send(options);
-    static quote = (options: RelaySendProps): RelayQuoteResult => await relayone.quote(options);
-    static sign = (message: string): RelaySignResult => await relayone.sign(message);
-    static encrypt = (message: string, paymail: string, encoding?: string): RelayEncryptResult => await relayone.encrypt(message, paymail, encoding ?? undefined);
-    static decrypt = (message: string): RelayDecryptResult => await relayone.decrypt(message);
-    static authBeta = (withGrant: boolean): string => await relayone.authBeta(withGrant ?? undefined);
-    static isLowFunds = (e: Error): boolean => await relayone.errors.isLowFunds(e);
+    // @ts-ignore // SUPPRESS relayone import
+    static isLinked = async (): boolean => await relayone.isLinked();
+    // @ts-ignore // SUPPRESS relayone import
+    static getBalance = async (): string => await relayone.getBalance();
+    // @ts-ignore // SUPPRESS relayone import
+    static send = async (options: RelaySendProps): RelaySendResult => await relayone.send(options);
+    // @ts-ignore // SUPPRESS relayone import
+    static quote = async (options: RelaySendProps): RelayQuoteResult => await relayone.quote(options);
+    // @ts-ignore // SUPPRESS relayone import
+    static sign = async (message: string): RelaySignResult => await relayone.sign(message);
+    // @ts-ignore // SUPPRESS relayone import
+    static encrypt = async (message: string, paymail: string, encoding?: string): RelayEncryptResult => await relayone.encrypt(message, paymail, encoding ?? undefined);
+    // @ts-ignore // SUPPRESS relayone import
+    static decrypt = async (message: string): RelayDecryptResult => await relayone.decrypt(message);
+    // @ts-ignore // SUPPRESS relayone import
+    static authBeta = async (withGrant: boolean): string => await relayone.authBeta(withGrant ?? undefined);
+    // @ts-ignore // SUPPRESS relayone import
+    static isLowFunds = async (e: Error): boolean => await relayone.errors.isLowFunds(e);
 
 }
