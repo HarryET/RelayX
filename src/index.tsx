@@ -1,13 +1,23 @@
 import * as React from 'react'
 import { Helmet } from 'react-helmet'
 
+interface RelayPaymentResult {
+  txid: string;
+  rawTx: string;
+  amount: number;
+  satoshis: number;
+  currency: string;
+  identity: string;
+  paymail: string;
+}
+
 interface RelaySwipeProps {
-  to: string
-  amount: number
-  currency: string
+  to?: string
+  amount?: number
+  currency?: string
   opReturn?: any[] | string
   outputs?: any[]
-  onPayment?: () => void
+  onPayment?: (payment: RelayPaymentResult) => void
   onError?: () => void
   onLoad?: () => void
   editable?: boolean
@@ -103,22 +113,22 @@ export class RelayOne {
     }
 
     // @ts-ignore // SUPPRESS relayone import
-    static isLinked = async (): boolean => await relayone.isLinked();
+    static isLinked = async (): Promise<boolean> => await relayone.isLinked();
     // @ts-ignore // SUPPRESS relayone import
-    static getBalance = async (): string => await relayone.getBalance();
+    static getBalance = async (): Promise<string> => await relayone.getBalance();
     // @ts-ignore // SUPPRESS relayone import
-    static send = async (options: RelaySendProps): RelaySendResult => await relayone.send(options);
+    static send = async (options: RelaySendProps): Promise<RelaySendResult> => await relayone.send(options);
     // @ts-ignore // SUPPRESS relayone import
-    static quote = async (options: RelaySendProps): RelayQuoteResult => await relayone.quote(options);
+    static quote = async (options: RelaySendProps): Promise<RelayQuoteResult> => await relayone.quote(options);
     // @ts-ignore // SUPPRESS relayone import
-    static sign = async (message: string): RelaySignResult => await relayone.sign(message);
+    static sign = async (message: string): Promise<RelaySignResult> => await relayone.sign(message);
     // @ts-ignore // SUPPRESS relayone import
-    static encrypt = async (message: string, paymail: string, encoding?: string): RelayEncryptResult => await relayone.encrypt(message, paymail, encoding ?? undefined);
+    static encrypt = async (message: string, paymail: string, encoding?: string): Promise<RelayEncryptResult> => await relayone.encrypt(message, paymail, encoding ?? undefined);
     // @ts-ignore // SUPPRESS relayone import
-    static decrypt = async (message: string): RelayDecryptResult => await relayone.decrypt(message);
+    static decrypt = async (message: string): Promise<RelayDecryptResult> => await relayone.decrypt(message);
     // @ts-ignore // SUPPRESS relayone import
-    static authBeta = async (withGrant: boolean): string => await relayone.authBeta(withGrant ?? undefined);
+    static authBeta = async (withGrant: boolean): Promise<string> => await relayone.authBeta(withGrant ?? undefined);
     // @ts-ignore // SUPPRESS relayone import
-    static isLowFunds = async (e: Error): boolean => await relayone.errors.isLowFunds(e);
+    static isLowFunds = async (e: Error): Promise<boolean> => await relayone.errors.isLowFunds(e);
 
 }
