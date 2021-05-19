@@ -39,4 +39,5 @@ BSV
 ## Credits
 
 [RelayX](https://relayx.io/) relayone js libary <br>
+[Andrew Johnson](https://github.com/andrewrjohn) PR To update Types <br>
 [HarryET](https://twetch.app/u/17309) RelayX TS & React port
